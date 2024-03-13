@@ -1,13 +1,14 @@
-package com.activityexample
+package com.activityexample.main
 
 import android.content.ContentValues.TAG
-import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
-import android.view.LayoutInflater
 import android.widget.Toast
+import com.activityexample.detail.DetailActivity
+import com.activityexample.R
 import com.activityexample.databinding.ActivityMainBinding
+import com.activityexample.model.Person
 
 class MainActivity : AppCompatActivity() {
 
@@ -28,7 +29,15 @@ class MainActivity : AppCompatActivity() {
     private fun navigateToProfile(){
        /* val intent = Intent(this, DetailActivity::class.java)
         startActivity(intent)*/
-        DetailActivity.startActivity(this, R.drawable.ic_launcher_background,"Ryan" , "Programer Beginner")
+        DetailActivity.startActivity(
+            this, Person(
+                "Rian Syah",
+                R.drawable.ic_launcher_background,
+                "Principal Android",
+                "lorem ipsum set dolot almet"
+            )
+        )
+
         Toast.makeText(this, "Navigate to profile", Toast.LENGTH_SHORT).show()
     }
 

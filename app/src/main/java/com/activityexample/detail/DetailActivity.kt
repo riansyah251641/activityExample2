@@ -1,12 +1,10 @@
-package com.activityexample
+package com.activityexample.detail
 
 import android.content.Context
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.view.LayoutInflater
 import com.activityexample.databinding.ActivityDetailBinding
-import com.activityexample.databinding.ActivityMainBinding
 import com.activityexample.model.Person
 
 
@@ -52,15 +50,16 @@ class DetailActivity : AppCompatActivity() {
     private fun getIntentData() {
         intent.extras?.getParcelable <Person>(EXTRAS_DETAIL_DATA)?. let{
             setProfileImage(it.imgResDrawable)
-            setProfileData(it.name, it.jobDesk)
+            setProfileData(it)
         }
 
 
     }
 
-    private fun setProfileData(textName: String?, textRole: String?) {
-        textName?.let { binding.tvName.text = it }
-        textRole?.let { binding.tvJobDesk.text = it }
+    private fun setProfileData(person: Person) {
+        binding.tvName.text = person.name
+        binding.tvJobDesk.text= person.jobDesk
+        binding.tvMoreDetails.text = person.shortDesk
     }
 
     private fun setProfileImage(imgResDrawable: Int?) {
